@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Squad, Every Season — Year-Round Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pitch:#0F3A26;
+  --pitch-stripe:#11402A;
+  --chalk:#EFEAD8;
+  --chalk-dim:rgba(239,234,216,.62);
+  --chalk-faint:rgba(239,234,216,.16);
+  --gold:#E9B44C;
+  --clay:#D2603A;
+  --night:#092518;
+  --card:#0C2F1F;
+  --maxw:1060px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{
+  font-family:'Barlow',sans-serif;
+  color:var(--chalk);
+  background:
+    repeating-linear-gradient(90deg,var(--pitch) 0 120px,var(--pitch-stripe) 120px 240px);
+  background-color:var(--pitch);
+  line-height:1.6;
+  font-size:17px;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+::selection{background:var(--gold);color:var(--night)}
+
+/* ---------- header / hero ---------- */
+header{
+  position:relative;
+  padding:72px 0 56px;
+  overflow:hidden;
+  border-bottom:2px solid var(--chalk-faint);
+}
+/* chalk center circle */
+header::before{
+  content:"";
+  position:absolute;
+  right:-140px;top:50%;
+  transform:translateY(-50%);
+  width:520px;height:520px;
+  border:3px solid var(--chalk-faint);
+  border-radius:50%;
+  pointer-events:none;
+}
+header::after{
+  content:"";
+  position:absolute;
+  right:118px;top:50%;
+  transform:translateY(-50%);
+  width:10px;height:10px;background:var(--chalk-faint);
+  border-radius:50%;
+}
+.eyebrow{
+  font-family:'Spline Sans Mono',monospace;
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:18px;
+}
+h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:clamp(52px,9vw,104px);
+  line-height:.92;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+h1 .accent{color:var(--gold)}
+.hero-sub{
+  max-width:560px;
+  margin-top:26px;
+  font-size:19px;
+  color:var(--chalk-dim);
+}
+.hero-sub strong{color:var(--chalk);font-weight:600}
+
+/* ---------- formation strip ---------- */
+.formations{
+  display:flex;gap:14px;flex-wrap:wrap;
+  margin-top:44px;
+}
+.formation{
+  flex:1 1 150px;min-width:150px;
+  background:var(--card);
+  border:1px solid var(--chalk-faint);
+  border-radius:6px;
+  padding:16px 14px 14px;
+}
+.formation h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.05em;
+}
+.formation .season{
+  font-family:'Spline Sans Mono',monospace;
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);
+}
+.dots{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:5px;
+  margin-top:12px;
+  max-width:120px;
+}
+.dots span{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--chalk);
+  opacity:.9;
+}
+.dots span.gk{background:var(--clay)}
+.formation p{font-size:13.5px;color:var(--chalk-dim);margin-top:10px;line-height:1.45}
+
+/* ---------- sections ---------- */
+section{padding:64px 0}
+section + section{border-top:2px solid var(--chalk-faint)}
+.kicker{
+  font-family:'Spline Sans Mono',monospace;
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+h2{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:clamp(34px,5vw,52px);
+  text-transform:uppercase;line-height:1;
+  margin-bottom:14px;
+}
+.lede{max-width:640px;color:var(--chalk-dim);margin-bottom:36px}
+.lede strong{color:var(--chalk)}
+
+/* ---------- fixture cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{
+  background:var(--card);
+  border:1px solid var(--chalk-faint);
+  border-radius:6px;
+  padding:22px 22px 20px;
+  display:flex;flex-direction:column;
+}
+.card .tag{
+  align-self:flex-start;
+  font-family:'Spline Sans Mono',monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--night);
+  background:var(--gold);
+  padding:3px 9px;border-radius:3px;
+  margin-bottom:14px;
+}
+.card .tag.travel{background:var(--clay);color:var(--chalk)}
+.card .tag.diy{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.card h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;font-size:25px;text-transform:uppercase;letter-spacing:.03em;
+  line-height:1.05;margin-bottom:4px;
+}
+.card .where{
+  font-family:'Spline Sans Mono',monospace;
+  font-size:12px;color:var(--chalk-dim);letter-spacing:.05em;
+  margin-bottom:12px;
+}
+.card p{font-size:15px;color:var(--chalk-dim);line-height:1.55}
+.card p strong{color:var(--chalk);font-weight:600}
+.card a{
+  color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(233,180,76,.4);
+}
+.card a:hover,.card a:focus-visible{border-bottom-color:var(--gold)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ---------- season board ---------- */
+.board{border:1px solid var(--chalk-faint);border-radius:6px;overflow:hidden}
+.board-row{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  border-bottom:1px solid var(--chalk-faint);
+  background:var(--card);
+}
+.board-row:last-child{border-bottom:none}
+.board-row .q{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:24px;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--night);
+  color:var(--gold);
+  padding:18px 8px;
+  border-right:1px solid var(--chalk-faint);
+  text-align:center;line-height:1.1;
+}
+.board-row .plays{padding:18px 22px}
+.board-row .plays h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;font-size:20px;text-transform:uppercase;letter-spacing:.04em;
+  margin-bottom:4px;
+}
+.board-row .plays p{font-size:15px;color:var(--chalk-dim)}
+.board-row .plays p strong{color:var(--chalk)}
+
+/* ---------- how we run it ---------- */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.rule{
+  border-left:3px solid var(--gold);
+  padding:4px 0 4px 18px;
+}
+.rule h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.03em;
+  margin-bottom:6px;
+}
+.rule p{font-size:15px;color:var(--chalk-dim)}
+.rule p strong{color:var(--chalk)}
+
+/* ---------- CTA ---------- */
+.cta{
+  text-align:center;
+  padding:80px 24px 96px;
+  border-top:2px solid var(--chalk-faint);
+  background:var(--night);
+}
+.cta h2{margin-bottom:12px}
+.cta p{max-width:520px;margin:0 auto 30px;color:var(--chalk-dim)}
+.cta .btn{
+  display:inline-block;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--night);
+  background:var(--gold);
+  padding:14px 44px;border-radius:4px;
+  text-decoration:none;
+  transition:transform .12s ease;
+}
+.cta .btn:hover{transform:translateY(-2px)}
+.cta .fine{
+  margin-top:22px;
+  font-family:'Spline Sans Mono',monospace;
+  font-size:12px;letter-spacing:.08em;color:var(--chalk-dim);
+}
+
+footer{
+  padding:26px 0;
+  font-family:'Spline Sans Mono',monospace;
+  font-size:12px;letter-spacing:.08em;
+  color:var(--chalk-dim);
+  text-align:center;
+  background:var(--night);
+}
+
+@media(max-width:640px){
+  header{padding:52px 0 44px}
+  header::before{width:340px;height:340px;right:-200px}
+  header::after{display:none}
+  .board-row{grid-template-columns:80px 1fr}
+  .board-row .q{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">A proposal to the squad · Lake Norman, NC</div>
+    <h1>One squad.<br><span class="accent">Every season.</span></h1>
+    <p class="hero-sub">We're 23 players deep and we only play together a few months a year. This is a plan to keep the same crew on the field <strong>all twelve months</strong> — shrinking and stretching the roster to fit whatever's available: 11v11, 8v8, 7v7, futsal, sand, or a Saturday we organize ourselves.</p>
+
+    <div class="formations">
+      <div class="formation">
+        <div class="season">Fall / Spring</div>
+        <h3>11 v 11</h3>
+        <div class="dots"><span class="gk"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p>Our home format. Full pitch, full league season.</p>
+      </div>
+      <div class="formation">
+        <div class="season">Summer / Tournaments</div>
+        <h3>8 v 8</h3>
+        <div class="dots"><span class="gk"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p>The Carolinas travel-tournament standard.</p>
+      </div>
+      <div class="formation">
+        <div class="season">Weeknights</div>
+        <h3>7 v 7</h3>
+        <div class="dots"><span class="gk"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p>Short-season leagues, easy to field two sides.</p>
+      </div>
+      <div class="formation">
+        <div class="season">Winter</div>
+        <h3>5 v 5</h3>
+        <div class="dots"><span class="gk"></span><span></span><span></span><span></span><span></span></div>
+        <p>Indoor and futsal. Sharp touch, no rust.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="kicker">The math</div>
+    <h2>23 players is a superpower</h2>
+    <p class="lede">Most teams can't do this — they scrape to field 11. We can field <strong>two 7v7 sides at once</strong>, absorb vacations, injuries, and work travel, and still never forfeit. Nobody commits to everything. You commit to the seasons and trips that fit your life, and the squad is always big enough to cover the rest. The team stays one team: <strong>one name, one kit, one group chat</strong> — the format is the only thing that changes.</p>
+
+    <div class="board">
+      <div class="board-row">
+        <div class="q">Spring</div>
+        <div class="plays">
+          <h4>11v11 league + tournament season opens</h4>
+          <p>Our main league campaign, plus one-day and weekend cups start popping up across both states.</p>
+        </div>
+      </div>
+      <div class="board-row">
+        <div class="q">Summer</div>
+        <div class="plays">
+          <h4>7v7 / 8v8 leagues + travel weekends</h4>
+          <p>Short outdoor seasons under the lights, a beach or mountain tournament trip, and our own standing pickup night.</p>
+        </div>
+      </div>
+      <div class="board-row">
+        <div class="q">Fall</div>
+        <div class="plays">
+          <h4>11v11 league, round two</h4>
+          <p>Back to the full-size game with legs that never stopped moving.</p>
+        </div>
+      </div>
+      <div class="board-row">
+        <div class="q">Winter</div>
+        <div class="plays">
+          <h4>Indoor 5v5, futsal, and friendlies</h4>
+          <p>Turf barns and gym courts keep the touch sharp. Arrange friendlies against other league teams itching to play.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avenues">
+  <div class="wrap">
+    <div class="kicker">The avenues</div>
+    <h2>Where we can play, all over the Carolinas</h2>
+    <p class="lede">A mix of organized leagues, travel tournaments, and things <strong>we run ourselves</strong> — because half the value of a 23-man roster is not needing anyone's permission to get a game going.</p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="tag">League</span>
+        <h3>Metrolina Adult Soccer League</h3>
+        <div class="where">Charlotte metro · Sundays</div>
+        <p>Player-run, not-for-profit league going 35+ years, with multiple divisions and promotion/relegation — we find our level and climb. <a href="https://metrolinasoccer.com" target="_blank" rel="noopener">metrolinasoccer.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag">League</span>
+        <h3>Charlotte Premier Soccer League</h3>
+        <div class="where">Charlotte · Open, O-40, O-50</div>
+        <p>Rec 11v11 with age-bracket divisions — a long-term home as the squad (gracefully) ages. <a href="https://www.cpslsoccer.com" target="_blank" rel="noopener">cpslsoccer.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag">League</span>
+        <h3>Charlotte Eagles Adult League</h3>
+        <div class="where">Charlotte · League + spring cup</div>
+        <p>Community-minded adult league that also runs its own annual spring tournament — two avenues in one. <a href="https://www.charlotteeagles.com/eaglesadultleague" target="_blank" rel="noopener">charlotteeagles.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag">League</span>
+        <h3>SportsLink 7v7</h3>
+        <div class="where">Charlotte · Weeknights</div>
+        <p>Men's and coed 7v7 with rec, intermediate, and competitive divisions — perfect summer-league size for splitting our roster. <a href="https://sportslinkus.com/sports-leagues/soccer" target="_blank" rel="noopener">sportslinkus.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag">League</span>
+        <h3>GoodRec Leagues &amp; Pickup</h3>
+        <div class="where">Charlotte / Pineville · App-based</div>
+        <p>7v7 outdoor leagues you enter as a full team, plus daily pickup runs bookable in the app — the lowest-friction way to get extra minutes any week. <a href="https://www.goodrec.com/soccer-leagues/charlotte" target="_blank" rel="noopener">goodrec.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Winter</span>
+        <h3>Total Soccer Charlotte</h3>
+        <div class="where">Charlotte · Indoor 5v5</div>
+        <p>Indoor leagues, pickup nights, and <strong>rentable turf</strong> — we can book the venue ourselves for squad nights when nothing else is running. <a href="https://totalsoccercharlotte.com" target="_blank" rel="noopener">totalsoccercharlotte.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag travel">Travel</span>
+        <h3>Carolinas Cup 8v8</h3>
+        <div class="where">Summerville, SC · Memorial Day weekend</div>
+        <p>Annual 8v8 tournament 20 minutes from downtown Charleston — the anchor road trip: two days of soccer, one city worth staying in. <a href="https://carolinascup.org" target="_blank" rel="noopener">carolinascup.org</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag travel">Travel</span>
+        <h3>NCASA Sanctioned Play</h3>
+        <div class="where">Statewide NC · Cups &amp; tournaments</div>
+        <p>The NC Adult Soccer Association runs 8v8 tournaments and State Cup competition — registering the squad opens the whole state calendar, and rostering into their events is free for registered members. <a href="https://www.ncasasoccer.org" target="_blank" rel="noopener">ncasasoccer.org</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag travel">Travel</span>
+        <h3>6v6 Charleston Cup</h3>
+        <div class="where">Charleston, SC · Destination weekend</div>
+        <p>Small-sided destination tournament that draws teams from across the country — six of us, a rental house, and a trophy to chase. <a href="https://www.6v6soccer.com" target="_blank" rel="noopener">6v6soccer.com</a></p>
+      </div>
+
+      <div class="card">
+        <span class="tag diy">We run it</span>
+        <h3>Standing Pickup Night</h3>
+        <div class="where">Lake Norman · Weekly, year-round</div>
+        <p>Our own weekly run — town park or rented turf, first 14 in the chat play 7v7. No refs, no fees beyond field time, no excuses. This alone keeps the squad connected between seasons.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag diy">We run it</span>
+        <h3>Offseason Friendlies</h3>
+        <div class="where">Charlotte metro · By arrangement</div>
+        <p>Every team in our league has the same offseason problem. We message their captains and set up scrimmages — full 11v11 reps with zero league fees.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag diy">We run it</span>
+        <h3>Beach &amp; Mountain Weekends</h3>
+        <div class="where">Coast &amp; Blue Ridge · 1–2 per year</div>
+        <p>Sand soccer at the coast, a cool-air summer session in the high country — trips built around a game but really about the crew. Families welcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="kicker">The operating model</div>
+    <h2>How we run it</h2>
+    <div class="rules">
+      <div class="rule">
+        <h3>Opt in per season</h3>
+        <p>Nobody signs up for the year. Each league, tournament, or trip gets a thumbs-up window in the chat — <strong>in or out, no guilt either way</strong>.</p>
+      </div>
+      <div class="rule">
+        <h3>Two captains per format</h3>
+        <p>Whoever's keenest on a given format runs it — collects fees, sets the roster, done. Spreads the load so no one person burns out.</p>
+      </div>
+      <div class="rule">
+        <h3>One kitty, small dues</h3>
+        <p>A modest per-season contribution covers league fees, field rentals, and balls. Tournaments and trips priced separately for those who go.</p>
+      </div>
+      <div class="rule">
+        <h3>One identity</h3>
+        <p>Same name, same colors, every format. Over a couple of years that's a <strong>reputation</strong> — and the team other squads want to schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>So — are you in?</h2>
+  <p>If the core group is on board, next step is simple: pick our first offseason format, I'll scout the entry, and we pitch the full 23.</p>
+  <a class="btn" href="sms:?&body=I'm in for the year-round squad.">I'm in</a>
+  <div class="fine">Reply in the group chat · No commitment beyond the first season</div>
+</div>
+
+<footer>Built for the squad · Lake Norman, NC · 2026</footer>
+
+</body>
+</html>
