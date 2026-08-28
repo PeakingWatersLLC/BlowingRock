@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Geology — Peaking Waters LLC | Blowing Rock, NC</title>
+<meta name="description" content="Why Blue Ridge groundwater tastes the way it does: the regolith-and-fractured-rock aquifer system beneath our Blowing Rock well, 400 feet down and 4,000 feet up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bedrock:#1E2A2A;
+    --bedrock-soft:#28383A;
+    --stone:#6E7368;
+    --mineral-cream:#F3EFE4;
+    --mineral-cream-dim:#E9E3D3;
+    --moss:#4C6350;
+    --copper:#9C6234;
+    --ice:#CFE0DA;
+    --line:rgba(30,42,42,0.14);
+    --display: 'Fraunces', serif;
+    --body: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--mineral-cream);
+    color:var(--bedrock);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---- top bar ---- */
+  .topbar{
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .topbar .brand{font-family:var(--display);font-size:15px;text-transform:none;letter-spacing:0;font-weight:600;}
+  .topbar nav a{margin-left:22px;text-decoration:none;color:var(--stone);}
+  .topbar nav a:hover{color:var(--bedrock);}
+  .topbar nav a.current{color:var(--bedrock);border-bottom:1px solid var(--copper);padding-bottom:2px;}
+  @media(max-width:720px){.topbar nav{display:none;}}
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 40px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--moss);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(34px,5vw,58px);
+    line-height:1.06;
+    margin:0 0 22px;
+    max-width:14ch;
+  }
+  .hero p.lede{
+    font-size:19px;
+    max-width:56ch;
+    color:#3A4444;
+    margin:0 0 8px;
+  }
+
+  /* ---- depth gauge stat row (matches site convention) ---- */
+  .gauge{
+    display:flex;
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin:44px 0 0;
+  }
+  .gauge div{
+    flex:1;
+    padding:18px 20px;
+    border-right:1px solid var(--line);
+  }
+  .gauge div:last-child{border-right:none;}
+  .gauge .num{
+    font-family:var(--mono);
+    font-size:22px;
+    color:var(--bedrock);
+  }
+  .gauge .label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--stone);
+    margin-top:4px;
+  }
+
+  /* ---- cross-section signature visual ---- */
+  .cross-section{
+    margin:56px 0 8px;
+    background:var(--bedrock);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .cross-section svg{display:block;width:100%;height:auto;}
+  .cs-caption{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--stone);
+    padding:14px 4px 0;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  /* layer fill-in on scroll */
+  .layer{opacity:0;transform:translateY(6px);transition:opacity .9s ease, transform .9s ease;}
+  .layer.in{opacity:1;transform:translateY(0);}
+
+  /* ---- section scaffolding ---- */
+  section.block{padding:72px 0;border-top:1px solid var(--line);}
+  .kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--moss);
+    margin-bottom:14px;
+  }
+  h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(26px,3.4vw,38px);
+    line-height:1.15;
+    margin:0 0 22px;
+    max-width:20ch;
+  }
+  .col-2{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  @media(max-width:760px){.col-2{grid-template-columns:1fr;gap:28px;}}
+  p{margin:0 0 16px;color:#33403F;}
+  .prose{max-width:64ch;}
+
+  /* ---- two-part system cards ---- */
+  .system-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:36px;border:1px solid var(--line);}
+  @media(max-width:760px){.system-grid{grid-template-columns:1fr;}}
+  .system-card{background:var(--mineral-cream);padding:32px;}
+  .system-card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--copper);margin-bottom:10px;}
+  .system-card h3{font-family:var(--display);font-weight:500;font-size:22px;margin:0 0 12px;}
+  .system-card ul{margin:14px 0 0;padding-left:18px;color:#33403F;font-size:15px;}
+  .system-card li{margin-bottom:6px;}
+
+  /* ---- data strip: water chemistry ---- */
+  .chem-strip{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border:1px solid var(--line);
+    margin-top:8px;
+  }
+  @media(max-width:760px){.chem-strip{grid-template-columns:repeat(2,1fr);}}
+  .chem-strip div{
+    padding:20px 16px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .chem-strip div:nth-child(5n){border-right:none;}
+  .chem-strip .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--stone);margin-bottom:6px;}
+  .chem-strip .v{font-family:var(--display);font-size:17px;}
+
+  /* ---- springs vs wells comparison ---- */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:36px;}
+  @media(max-width:760px){.compare{grid-template-columns:1fr;}}
+  .compare > div{padding:30px 32px;}
+  .compare > div:first-child{border-right:1px solid var(--line);background:var(--mineral-cream-dim);}
+  @media(max-width:760px){.compare > div:first-child{border-right:none;border-bottom:1px solid var(--line);}}
+  .compare h4{font-family:var(--display);font-weight:500;font-size:19px;margin:0 0 10px;}
+  .compare p{font-size:14.5px;}
+
+  /* ---- pull quote / bottom line ---- */
+  .bottom-line{
+    background:var(--bedrock);
+    color:var(--mineral-cream);
+    padding:64px 0;
+  }
+  .bottom-line .wrap{max-width:820px;}
+  .bottom-line .kicker{color:var(--ice);}
+  .bottom-line p.big{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(22px,3vw,30px);
+    line-height:1.4;
+    color:var(--mineral-cream);
+  }
+  .bottom-line .cta{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:13px 22px;
+    border:1px solid var(--mineral-cream);
+    color:var(--mineral-cream);
+  }
+  .btn.solid{background:var(--mineral-cream);color:var(--bedrock);}
+  .btn:hover{opacity:.85;}
+
+  /* ---- footer (mirrors site) ---- */
+  footer{padding:48px 0 60px;border-top:1px solid var(--line);}
+  footer .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;}
+  @media(max-width:640px){footer .fgrid{grid-template-columns:1fr;gap:24px;}}
+  footer h5{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--stone);margin:0 0 12px;}
+  footer .brand{font-family:var(--display);font-weight:600;font-size:17px;margin-bottom:8px;}
+  footer p{font-size:13.5px;color:var(--stone);}
+  footer a{text-decoration:none;color:#33403F;font-size:13.5px;display:block;margin-bottom:6px;}
+  footer a:hover{color:var(--copper);}
+  .legal{margin-top:36px;font-family:var(--mono);font-size:11px;color:var(--stone);}
+</style>
+</head>
+<body>
+
+<div class="topbar wrap">
+  <div class="brand">Peaking Waters</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="water.html">The Water</a>
+    <a href="geology.html" class="current">The Geology</a>
+    <a href="farm.html">The Farm</a>
+    <a href="events.html">Events</a>
+    <a href="copack.html">Co-Pack Partners</a>
+  </nav>
+</div>
+
+<header class="hero wrap">
+  <div class="eyebrow">The Source, Below the Source</div>
+  <h1>Four hundred feet through eight-hundred-million-year-old rock.</h1>
+  <p class="lede">Our well doesn't draw from a pipe or a reservoir — it draws from a two-part aquifer system that took the Blue Ridge Mountains most of a billion years to build. Here's what's actually down there.</p>
+
+  <div class="gauge">
+    <div><div class="num">4,000 FT</div><div class="label">Elevation</div></div>
+    <div><div class="num">0</div><div class="label">Wellhead</div></div>
+    <div><div class="num">−400 FT</div><div class="label">Aquifer</div></div>
+    <div><div class="num">~15 IN/YR</div><div class="label">Regional recharge</div></div>
+  </div>
+
+  <div class="cross-section" id="crossSection">
+    <svg viewBox="0 0 1000 460" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <!-- sky -->
+      <rect x="0" y="0" width="1000" height="90" fill="#2A3A3A"/>
+      <!-- regolith layer -->
+      <g class="layer" data-delay="0">
+        <rect x="0" y="90" width="1000" height="120" fill="#3A4A42"/>
+        <text x="24" y="118" font-family="IBM Plex Mono" font-size="12" fill="#CFE0DA" letter-spacing="1">REGOLITH — WEATHERED SAPROLITE</text>
+        <text x="24" y="138" font-family="IBM Plex Mono" font-size="11" fill="#9FB0A9">0–150 FT · POROSITY 35–55% · STORAGE LAYER</text>
+      </g>
+      <!-- fractured bedrock -->
+      <g class="layer" data-delay="150">
+        <rect x="0" y="210" width="1000" height="250" fill="#1E2A2A"/>
+        <text x="24" y="238" font-family="IBM Plex Mono" font-size="12" fill="#CFE0DA" letter-spacing="1">FRACTURED CRYSTALLINE BEDROCK</text>
+        <text x="24" y="258" font-family="IBM Plex Mono" font-size="11" fill="#8A968F">GNEISS · SCHIST · GRANITE — WATER MOVES THROUGH JOINTS &amp; FAULTS</text>
+        <!-- fracture lines -->
+        <path d="M120 210 L150 300 L100 380 L140 460" stroke="#4C6350" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M600 210 L640 270 L590 340 L650 420 L610 460" stroke="#4C6350" stroke-width="2" fill="none" opacity="0.6"/>
+        <path d="M820 210 L790 290 L850 360 L800 460" stroke="#4C6350" stroke-width="2" fill="none" opacity="0.5"/>
+        <path d="M350 210 L330 280 L380 350" stroke="#3E5142" stroke-width="1.5" fill="none" opacity="0.5"/>
+      </g>
+      <!-- well shaft -->
+      <g class="layer" data-delay="300">
+        <rect x="475" y="20" width="10" height="440" fill="#9C6234"/>
+        <circle cx="480" cy="20" r="9" fill="#9C6234"/>
+        <!-- water table marker -->
+        <line x1="0" y1="300" x2="1000" y2="300" stroke="#CFE0DA" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+        <text x="900" y="294" font-family="IBM Plex Mono" font-size="10" fill="#CFE0DA" text-anchor="end">WATER TABLE</text>
+        <!-- screen at base -->
+        <rect x="470" y="440" width="20" height="16" fill="none" stroke="#CFE0DA" stroke-width="1.5"/>
+      </g>
+      <!-- surface label -->
+      <text x="24" y="60" font-family="Fraunces" font-size="20" fill="#F3EFE4">Edmisten Road, Blowing Rock — 4,000 FT</text>
+      <text x="500" y="45" font-family="IBM Plex Mono" font-size="10" fill="#CFE0DA" text-anchor="middle">WELLHEAD</text>
+    </svg>
+  </div>
+  <div class="cs-caption wrap" style="padding-left:0;padding-right:0;">
+    <span>Fig. 1 — Simplified cross-section of the Peaking Waters well site</span>
+    <span>Not to exact scale</span>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">The Core System</div>
+    <h2>One aquifer, two very different jobs.</h2>
+    <div class="prose">
+      <p>The Blue Ridge and Piedmont sit on crystalline rock — gneiss, schist, granite — with almost no gaps in the stone itself for water to sit in. So usable groundwater here doesn't behave like it does over sand or limestone. It moves through two layers stacked on top of each other, each doing a different job.</p>
+    </div>
+
+    <div class="system-grid">
+      <div class="system-card">
+        <div class="tag">Layer One</div>
+        <h3>Regolith — the sponge</h3>
+        <p>The weathered soil and saprolite sitting on top of bedrock. Loose, porous, and slow-draining.</p>
+        <ul>
+          <li>Typically 0–150+ ft thick, highly variable</li>
+          <li>Porosity of 35–55% — this is where the water is actually stored</li>
+          <li>Filters and holds rainfall before it ever reaches rock</li>
+        </ul>
+      </div>
+      <div class="system-card">
+        <div class="tag">Layer Two</div>
+        <h3>Fractured bedrock — the plumbing</h3>
+        <p>Solid crystalline rock, moved through only where it's cracked.</p>
+        <ul>
+          <li>Water travels through joints, fractures, and faults</li>
+          <li>Domestic wells here typically yield 5–20 GPM</li>
+          <li>Deeper fractures hold colder water with longer residence time</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:14.5px;color:var(--stone);max-width:64ch;">It's this two-part handoff — sponge above, plumbing below — that Blue Ridge water is talking about when people describe it as filtered through ancient mountain geology. It isn't a metaphor.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap col-2">
+    <div>
+      <div class="kicker">Local Context</div>
+      <h2>What's actually under Edmisten Road.</h2>
+      <div class="prose">
+        <p>Our well sits at roughly 4,000 ft elevation and draws from about 400 ft down — solidly inside the fractured crystalline-rock system that defines the North Carolina High Country. USGS work in Avery and Watauga Counties confirms the area is dominated by metaigneous, felsic intrusive, gneiss, and schist units, with yields that vary widely depending on fracture density and how thick the regolith runs above them.</p>
+        <p>Recharge is generous up here relative to the rest of the state — regional studies put it near 15 inches a year — driven by orographic rainfall and forested watersheds that catch and hold what falls.</p>
+      </div>
+    </div>
+    <div>
+      <div class="kicker">Why the Elevation Matters</div>
+      <h2>Height does real work, not just scenery.</h2>
+      <div class="prose">
+        <p>Higher elevation means cooler ground temperature and slower biological activity. Forested mountain watershed means excellent natural filtration before water ever reaches the regolith. And crystalline rock, unlike porous sedimentary aquifers, is naturally harder for contamination to spread through broadly — though individual fracture zones still depend on the surface above them being protected.</p>
+        <p>That's the part we control directly: a farmed, stewarded property and a carefully managed wellhead, on land we're not renting out to anything that could compromise it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Water Chemistry</div>
+    <h2>What ends up in the glass.</h2>
+    <p class="prose">Groundwater from Blue Ridge crystalline-rock aquifers tends to run a consistent profile — and ours tests to it. This is the "mineral-forward but clean-finishing" character behind everything in our <a href="water.html" style="color:var(--copper);">product lines</a>.</p>
+    <div class="chem-strip">
+      <div><div class="k">Hardness</div><div class="v">Soft–moderate</div></div>
+      <div><div class="k">pH</div><div class="v">Slightly acidic–neutral</div></div>
+      <div><div class="k">TDS</div><div class="v">Low–moderate</div></div>
+      <div><div class="k">Mineral notes</div><div class="v">Ca · Mg · Si</div></div>
+      <div><div class="k">Watch items</div><div class="v">Radon, Fe/Mn (tested)</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Springs vs. Wells</div>
+    <h2>Same aquifer system, two different draws.</h2>
+    <div class="compare">
+      <div>
+        <h4>True springs</h4>
+        <p>Water that emerges naturally at the surface — gravity-fed, common across the Blue Ridge, and used by several NC and north Georgia bottlers, often under NC Spring Water Association standards.</p>
+      </div>
+      <div>
+        <h4>Our well</h4>
+        <p>Taps the same regional system, but at depth. Done right — deep, protected, high elevation — a well delivers cold, consistent, low-contaminant water with a stable mineral profile that's easier to guarantee batch to batch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bottom-line">
+  <div class="wrap">
+    <div class="kicker">Bottom Line</div>
+    <p class="big">This is some of the cleanest, most geologically influenced groundwater in the eastern U.S. — deep, well-protected, drawn from intact forested mountain land. Water that moved slowly through ancient rock, 400 feet below a 4,000-foot ridge, before it ever reached a bottle.</p>
+    <div class="cta">
+      <a href="water.html" class="btn solid">See the three product lines</a>
+      <a href="copack.html" class="btn">Partner with us as a co-packer</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="brand">Peaking Waters LLC</div>
+        <p>Rooted in place, built for the long game. Blowing Rock &amp; Lake Norman, North Carolina.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="water.html">High Country Mineral Water</a>
+        <a href="geology.html">The Geology</a>
+        <a href="farm.html">Fraser Fir Farm</a>
+        <a href="events.html">Events &amp; Adventures</a>
+        <a href="copack.html">Co-Pack Partners</a>
+      </div>
+      <div>
+        <h5>Connect</h5>
+        <a href="mailto:info@peakingwaters.com">info@peakingwaters.com</a>
+        <a href="https://yskaipe.com">YSKAIPE — our trades platform</a>
+      </div>
+    </div>
+    <div class="legal">© 2026 Peaking Waters LLC. All rights reserved. Well water tested per NC guidelines. Drink responsibly.</div>
+  </div>
+</footer>
+
+<script>
+  const layers = document.querySelectorAll('.layer');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        layers.forEach(l => {
+          const delay = parseInt(l.getAttribute('data-delay')) || 0;
+          setTimeout(() => l.classList.add('in'), delay);
+        });
+        observer.disconnect();
+      }
+    });
+  }, {threshold:0.2});
+  const cs = document.getElementById('crossSection');
+  if(cs) observer.observe(cs);
+</script>
+
+</body>
+</html>
