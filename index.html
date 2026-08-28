@@ -1,169 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Peaking Waters LLC — High Country Mineral Water, Fraser Firs & Mountain Events | Blowing Rock, NC</title>
-<meta name="description" content="Peaking Waters LLC builds at the intersection of land, water, and technology in Blowing Rock, NC — High Country Mineral Water drawn 400 feet into a pristine mountain aquifer at 4,000 feet elevation, a Fraser fir farm and Christmas stop, and special events worth showing up for." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/site.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peaking Waters LLC — Fonte di Montagna | Blowing Rock, NC</title>
+<meta name="description" content="High Country Mineral Water, water bars, and Fraser firs on a mountain property near Appalachian Ski Mtn in Blowing Rock, NC. Stop in and taste it. Special events begin 2027; Fraser fir planting begins the first week of November.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Italianno&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azure:#1B5A7A;
+    --azure-deep:#123E54;
+    --gold:#B8924A;
+    --gold-light:#D9BD84;
+    --cream:#FAF5E9;
+    --cream-dim:#F1E7D2;
+    --sage:#4A6659;
+    --sage-deep:#33473D;
+    --ink:#1E2E33;
+    --stone:#7C8A84;
+    --line:rgba(30,46,51,0.16);
+    --display:'Cormorant Garamond', serif;
+    --script:'Italianno', cursive;
+    --body:'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+  .it{font-style:italic;color:var(--azure);}
+
+  /* ---- top bar ---- */
+  .topbar{background:var(--azure);color:var(--cream);padding:14px 0;}
+  .topbar .row{display:flex;justify-content:space-between;align-items:center;}
+  .topbar .brand{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:.03em;color:var(--cream);text-decoration:none;display:flex;align-items:baseline;gap:10px;}
+  .topbar .brand .script{font-family:var(--script);font-size:30px;font-weight:400;color:var(--gold-light);letter-spacing:0;}
+  .topbar nav{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
+  .topbar nav a{margin-left:22px;text-decoration:none;color:var(--gold-light);opacity:.85;}
+  .topbar nav a:hover{opacity:1;}
+  .topbar nav a.current{color:var(--cream);opacity:1;border-bottom:1px solid var(--cream);padding-bottom:3px;}
+  @media(max-width:760px){.topbar nav{display:none;}}
+
+  /* ---- hero ---- */
+  .hero{padding:70px 0 54px;position:relative;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-bottom:18px;}
+  h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(48px,7.6vw,92px);
+    line-height:0.98;
+    letter-spacing:-.015em;
+    margin:0 0 26px;
+    max-width:14ch;
+    color:var(--azure-deep);
+  }
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center;}
+  @media(max-width:820px){.hero-inner{grid-template-columns:1fr;}}
+  .hero p.lede{font-size:20px;line-height:1.55;max-width:48ch;color:#374C50;margin:0 0 32px;}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:15px 26px;border:1px solid var(--azure);color:var(--azure);}
+  .btn.solid{background:var(--azure);color:var(--cream);}
+  .btn:hover{opacity:.8;}
+
+  .medallion{display:flex;justify-content:center;}
+  .medallion svg{width:min(290px,80%);height:auto;}
+
+  .gauge{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:48px 0 0;}
+  .gauge div{flex:1;padding:19px 20px;border-right:1px solid var(--line);}
+  .gauge div:last-child{border-right:none;}
+  .gauge .num{font-family:var(--mono);font-size:23px;color:var(--azure-deep);}
+  .gauge .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--stone);margin-top:4px;}
+
+  /* ---- section scaffolding ---- */
+  section.block{padding:84px 0;border-top:1px solid var(--line);}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-bottom:16px;}
+  .kicker .it{text-transform:none;letter-spacing:0;color:var(--gold);opacity:.9;margin-left:8px;font-size:13.5px;}
+  h2{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(34px,4.6vw,52px);
+    line-height:1.06;
+    letter-spacing:-.01em;
+    margin:0 0 10px;
+    max-width:18ch;
+    color:var(--azure-deep);
+  }
+  p{margin:0 0 16px;color:#374C50;}
+
+  /* ---- pillars ---- */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:42px;border:1px solid var(--line);}
+  @media(max-width:760px){.pillars{grid-template-columns:1fr;}}
+  .pillar{background:var(--cream);text-decoration:none;color:var(--ink);display:block;}
+  .pillar .ph{height:190px;background:linear-gradient(135deg,var(--azure-deep),var(--azure));position:relative;overflow:hidden;}
+  .pillar .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 25%, rgba(217,189,132,.28), transparent 60%);}
+  .pillar:nth-child(2) .ph{background:linear-gradient(135deg,var(--sage-deep),var(--sage));}
+  .pillar:nth-child(3) .ph{background:linear-gradient(135deg,#3a2c1e,#5a4530);}
+  .pillar .pc{padding:26px 24px;}
+  .pillar .tag{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--azure);margin-bottom:9px;}
+  .pillar h3{font-family:var(--display);font-weight:700;font-size:27px;line-height:1.15;margin:0 0 11px;color:var(--azure-deep);}
+  .pillar p{font-size:14.5px;margin:0;color:#374C50;}
+  .pillar:hover .ph::after{background:radial-gradient(circle at 75% 25%, rgba(217,189,132,.42), transparent 60%);}
+
+  /* ---- on the calendar (bold impressions) ---- */
+  .calendar{background:var(--azure-deep);color:var(--cream);position:relative;overflow:hidden;}
+  .calendar .script-bg{
+    position:absolute;
+    font-family:var(--script);
+    font-size:220px;
+    color:rgba(250,245,233,.05);
+    top:-40px;
+    right:-20px;
+    line-height:1;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+  .cal-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(250,245,233,.18);position:relative;}
+  @media(max-width:760px){.cal-grid{grid-template-columns:1fr;}}
+  .cal-item{padding:64px 48px;border-right:1px solid rgba(250,245,233,.18);}
+  .cal-item:last-child{border-right:none;}
+  @media(max-width:760px){.cal-item{border-right:none;border-bottom:1px solid rgba(250,245,233,.18);}}
+  @media(max-width:640px){.cal-item{padding:48px 28px;}}
+  .cal-item .big-num{font-family:var(--display);font-weight:700;font-size:clamp(64px,9vw,120px);line-height:.9;letter-spacing:-.02em;color:var(--gold-light);margin-bottom:16px;}
+  .cal-item h3{font-family:var(--display);font-weight:600;font-size:29px;line-height:1.18;margin:0 0 12px;color:var(--cream);max-width:16ch;}
+  .cal-item p{color:#D9E4E0;font-size:15.5px;max-width:36ch;margin:0;}
+  .cal-item .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px;}
+
+  /* ---- visit + newsletter ---- */
+  .visit{background:var(--cream-dim);}
+  .visit-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  @media(max-width:820px){.visit-inner{grid-template-columns:1fr;gap:32px;}}
+  .visit h2{max-width:14ch;}
+  .visit-locator{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .newsletter-card{background:var(--azure);color:var(--cream);padding:38px;border-radius:2px;}
+  .newsletter-card .script{font-family:var(--script);font-size:38px;color:var(--gold-light);display:block;margin-bottom:6px;line-height:1;}
+  .newsletter-card h3{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 12px;color:var(--cream);}
+  .newsletter-card p{color:#D9E4E0;font-size:14.5px;margin:0 0 22px;}
+  .signup-row{display:flex;gap:0;border:1px solid rgba(250,245,233,.5);}
+  .signup-row input{
+    flex:1;
+    background:transparent;
+    border:none;
+    padding:14px 16px;
+    color:var(--cream);
+    font-family:var(--body);
+    font-size:14px;
+  }
+  .signup-row input::placeholder{color:#B9CBD1;}
+  .signup-row input:focus{outline:none;}
+  .signup-row button{
+    background:var(--gold);
+    border:none;
+    color:var(--azure-deep);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:0 22px;
+    cursor:pointer;
+  }
+  .signup-row button:hover{opacity:.85;}
+
+  /* ---- footer ---- */
+  footer{padding:52px 0 60px;border-top:1px solid var(--line);}
+  footer .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;}
+  @media(max-width:640px){footer .fgrid{grid-template-columns:1fr;gap:24px;}}
+  footer h5{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--stone);margin:0 0 12px;}
+  footer .brand{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:8px;color:var(--azure-deep);}
+  footer p{font-size:13.5px;color:var(--stone);}
+  footer a{text-decoration:none;color:#374C50;font-size:13.5px;display:block;margin-bottom:6px;}
+  footer a:hover{color:var(--azure);}
+  .legal{margin-top:36px;font-family:var(--mono);font-size:11px;color:var(--stone);}
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html">Peaking <span>Waters</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a href="index.html" aria-current="page">Home</a>
+<div class="topbar">
+  <div class="wrap row">
+    <a href="index.html" class="brand">Peaking Waters <span class="script">Fonte di Montagna</span></a>
+    <nav>
+      <a href="index.html" class="current">Home</a>
       <a href="water.html">The Water</a>
+      <a href="geology.html">The Geology</a>
       <a href="farm.html">The Farm</a>
       <a href="events.html">Events</a>
-      <a href="copack.html" class="cta">Co-Pack Partners</a>
+      <a href="copack.html">Co-Pack Partners</a>
+      <a href="about.html">Chi Siamo</a>
     </nav>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Blowing Rock, North Carolina</div>
+      <h1>Drawn 400 feet down. Raised 4,000 feet up.</h1>
+      <p class="lede">Part adventure, part beautiful outdoor space — water bars scattered across the ridge, mineral water pulled from 400 feet below it, and Fraser firs growing in between. Down to earth, right near Appalachian Ski Mtn. Stop in, try what we pour, and stay for the view.</p>
+      <div class="hero-cta">
+        <a href="water.html" class="btn solid">Meet the water</a>
+        <a href="events.html" class="btn">Plan a visit</a>
+      </div>
+    </div>
+    <div class="medallion">
+      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="130" cy="130" r="122" fill="none" stroke="#B8924A" stroke-width="2"/>
+        <circle cx="130" cy="130" r="112" fill="none" stroke="#B8924A" stroke-width="1"/>
+        <circle cx="130" cy="130" r="98" fill="#1B5A7A"/>
+        <path id="topArc" d="M 34 126 A 96 96 0 0 1 226 126" fill="none"/>
+        <path id="botArc" d="M 38 136 A 92 92 0 0 0 222 136" fill="none"/>
+        <text font-family="IBM Plex Mono" font-size="11" letter-spacing="2.4" fill="#F7F0E2">
+          <textPath href="#topArc" startOffset="50%" text-anchor="middle">PEAKING WATERS · EST. NC</textPath>
+        </text>
+        <text font-family="IBM Plex Mono" font-size="11" letter-spacing="2.4" fill="#F7F0E2">
+          <textPath href="#botArc" startOffset="50%" text-anchor="middle">BLOWING ROCK, NC</textPath>
+        </text>
+        <text x="130" y="140" font-family="Italianno" font-size="52" fill="#F7F0E2" text-anchor="middle">Fonte di Montagna</text>
+        <line x1="78" y1="158" x2="182" y2="158" stroke="#D9BD84" stroke-width="1"/>
+        <text x="130" y="178" font-family="IBM Plex Mono" font-size="11" letter-spacing="2" fill="#D9BD84" text-anchor="middle">4,000 FT — 400 FT</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="gauge">
+    <div><div class="num">4,000 FT</div><div class="label">Elevation</div></div>
+    <div><div class="num">0</div><div class="label">Wellhead</div></div>
+    <div><div class="num">−400 FT</div><div class="label">Aquifer</div></div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-media">
-    <!-- HERO VIDEO SLOT: drop a drone flyover of the property at
-         assets/video/hero-ridge.mp4 and uncomment. Poster image at
-         assets/img/hero-ridge.jpg used as fallback. -->
-    <!-- <video autoplay muted loop playsinline poster="assets/img/hero-ridge.jpg">
-      <source src="assets/video/hero-ridge.mp4" type="video/mp4" />
-    </video> -->
-  </div>
-  <div class="wrap hero-inner">
-    <div>
-      <span class="depth-chip">Blowing Rock, North Carolina</span>
-      <h1>Drawn 400 feet down. Raised 4,000 feet up.</h1>
-      <p class="lede">Mineral waters and infusions from our Blowing Rock well — pulled from a pristine mountain aquifer four thousand feet above sea level, on land we farm, steward, and open to friends.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="water.html">Meet the water</a>
-        <a class="btn btn-ghost" href="copack.html">Partner with us</a>
-      </div>
-    </div>
-    <div class="gauge" aria-label="Elevation gauge: 4,000 feet elevation at the surface, wellhead at zero, aquifer 400 feet below">
-      <div class="tick"><strong>4,000 FT</strong> ELEVATION</div>
-      <div class="tick"><strong>0</strong> WELLHEAD</div>
-      <div class="tick aquifer"><strong>−400 FT</strong> AQUIFER</div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
+<section class="block">
   <div class="wrap">
-    <span class="depth-chip">Who we are</span>
-    <h2>Land, water, and the long game.</h2>
-    <p class="sub">Peaking Waters LLC exists at the intersection of land, water, and technology — building ventures that are rooted in place and built for the long game. From Fraser firs to water bars and clean water products, we champion goods that come from the land and return value to it. We back the right causes, throw the events worth showing up for, and chase adventures that remind us why we build in the first place.</p>
-
-    <div class="grid cols-3">
-      <a href="water.html" style="text-decoration:none" class="reveal">
-        <div class="card">
-          <div class="media wide" style="margin:-30px -28px 22px; border-radius: var(--radius) var(--radius) 0 0;">
-            <!-- IMAGE SLOT: wellhead / bottling shot -->
-            <span class="slot-label">img: assets/img/pillar-water.jpg</span>
-          </div>
-          <span class="depth-chip">Flagship</span>
+    <div class="kicker">Explore <span class="it">— Esplora</span></div>
+    <h2>Three ways onto the mountain.</h2>
+    <div class="pillars">
+      <a class="pillar" href="water.html">
+        <div class="ph"></div>
+        <div class="pc">
+          <div class="tag">Flagship</div>
           <h3>High Country Mineral Water</h3>
-          <p>Still, sparkling, and botanical infusions from our mountain aquifer. Clean geology you can taste.</p>
+          <p>Still, sparkling, and botanical infusions, poured fresh at water bars across the property.</p>
         </div>
       </a>
-      <a href="farm.html" style="text-decoration:none" class="reveal">
-        <div class="card">
-          <div class="media wide" style="margin:-30px -28px 22px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(160deg, #dcead9, #a9c9a4 55%, #7fa87c);">
-            <!-- IMAGE SLOT: fir rows in snow -->
-            <span class="slot-label">img: assets/img/pillar-farm.jpg</span>
-          </div>
-          <span class="depth-chip">In season</span>
+      <a class="pillar" href="farm.html">
+        <div class="ph"></div>
+        <div class="pc">
+          <div class="tag">In Season</div>
           <h3>Fraser Fir Farm &amp; Christmas Stop</h3>
-          <p>Real trees, wreaths, and hot drinks made with our well water — right down the road from Appalachian Ski Mtn.</p>
+          <p>Real trees, wreaths, and hot drinks made with our own water — five minutes from Appalachian Ski Mtn.</p>
         </div>
       </a>
-      <a href="events.html" style="text-decoration:none" class="reveal">
-        <div class="card">
-          <div class="media wide" style="margin:-30px -28px 22px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(160deg, #e9e2d3, #d3b98a 55%, #b08d55);">
-            <!-- IMAGE SLOT: campfire / music night -->
-            <span class="slot-label">img: assets/img/pillar-events.jpg</span>
-          </div>
-          <span class="depth-chip">Year round</span>
+      <a class="pillar" href="events.html">
+        <div class="ph"></div>
+        <div class="pc">
+          <div class="tag">Year Round</div>
           <h3>Events &amp; Adventures</h3>
-          <p>Camping and RV stays, sustainability workshops, music nights, and outdoor adventures. Dogs welcome, always.</p>
+          <p>Camping, workshops, and music nights — adventure that starts and ends with a good glass of water.</p>
         </div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="section tint">
+<section class="calendar">
+  <div class="script-bg">2027</div>
+  <div class="wrap" style="padding-top:60px;position:relative;">
+    <div class="kicker" style="color:var(--gold-light);">On the Calendar <span class="it" style="color:var(--cream-dim);">— Sul Calendario</span></div>
+    <h2 style="color:var(--cream);max-width:26ch;">What's ahead on the property.</h2>
+  </div>
+  <div class="cal-grid">
+    <div class="cal-item">
+      <div class="big-num">2027</div>
+      <h3>Special Events coming to Peaking Waters</h3>
+      <p>Music nights, sustainability workshops, and mountain gatherings — the calendar opens next year. <a href="events.html" style="color:var(--gold-light);text-decoration:underline;">See what's planned</a></p>
+    </div>
+    <div class="cal-item">
+      <div class="tag">First Week of November</div>
+      <h3 style="font-size:36px;">Fraser fir planting begins</h3>
+      <p>The next stand goes into the ground this fall, right down the road from Appalachian Ski Mtn. <a href="farm.html" style="color:var(--gold-light);text-decoration:underline;">The farm</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="block visit">
   <div class="wrap">
-    <div class="feature">
-      <div class="media">
-        <!-- IMAGE SLOT: the spring / creek on the property -->
-        <span class="slot-label">img: assets/img/source-story.jpg</span>
-      </div>
+    <div class="visit-inner">
       <div>
-        <span class="depth-chip">The source</span>
-        <h2>One property. One aquifer. One standard.</h2>
-        <p class="sub">Our well sits on Edmisten Road in Blowing Rock, in the heart of the Blue Ridge. The water comes up cold, crisp, and naturally filtered through ancient mountain geology — subtle minerals, no off-flavors, tested to North Carolina well-water standards. It's the base of everything we bottle and everything we pour.</p>
-        <div style="margin-top:22px">
-          <span class="pill">Naturally filtered</span>
-          <span class="pill">Mineral-forward</span>
-          <span class="pill">Independently tested</span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-dark" href="water.html">The full source story</a>
-        </div>
+        <div class="visit-locator">Blowing Rock, NC — Near Appalachian Ski Mtn</div>
+        <div class="kicker">Come Taste It <span class="it">— Vieni ad Assaggiare</span></div>
+        <h2>Stop by, try what we pour, and stay a while.</h2>
+        <p style="max-width:48ch;font-size:16.5px;">Our water bars are open on the property — still, sparkling, and botanical, poured in a setting most people drive right past on the way up the mountain. Come find out why it's worth the stop.</p>
+      </div>
+      <div class="newsletter-card">
+        <span class="script">Resta con noi</span>
+        <h3>Get on the list.</h3>
+        <p>First word on 2027 events, the November planting, and everything else happening on the property.</p>
+        <form class="signup-row" onsubmit="return false;">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Join</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section dark">
+<footer>
   <div class="wrap">
-    <span class="depth-chip">For beverage partners</span>
-    <h2>We built this site to make co-packing with us easy.</h2>
-    <p class="sub">From first call to first pallet — our partnership process, responsibilities, terms, and communications cadence are all published and A-to-Z. If you run a certified beverage co-packing facility in the Carolinas, we'd like to talk.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="copack.html">See the partner process</a>
-      <a class="btn btn-ghost" href="copack.html#contact">Start a conversation</a>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="cols">
+    <div class="fgrid">
       <div>
-        <div class="footer-brand">Peaking Waters LLC</div>
-        <p style="max-width:38ch">Rooted in place, built for the long game. Blowing Rock &amp; Lake Norman, North Carolina.</p>
+        <div class="brand">Peaking Waters LLC</div>
+        <p>Rooted in place, built for the long game. Blowing Rock &amp; Lake Norman, North Carolina.</p>
       </div>
       <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="water.html">High Country Mineral Water</a></li>
-          <li><a href="farm.html">Fraser Fir Farm</a></li>
-          <li><a href="events.html">Events &amp; Adventures</a></li>
-          <li><a href="copack.html">Co-Pack Partners</a></li>
-        </ul>
+        <h5>Explore</h5>
+        <a href="water.html">High Country Mineral Water</a>
+        <a href="geology.html">The Geology</a>
+        <a href="farm.html">Fraser Fir Farm</a>
+        <a href="events.html">Events &amp; Adventures</a>
+        <a href="copack.html">Co-Pack Partners</a>
       </div>
       <div>
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="mailto:info@peakingwaters.com">info@peakingwaters.com</a></li>
-          <li><a href="https://yskaipe.com">YSKAIPE — our trades platform</a></li>
-        </ul>
+        <h5>Connect</h5>
+        <a href="about.html">La Nostra Storia</a>
+        <a href="mailto:info@peakingwaters.com">info@peakingwaters.com</a>
       </div>
     </div>
-    <div class="fine">
-      <span>© 2026 Peaking Waters LLC. All rights reserved.</span>
-      <span>Well water tested per NC guidelines. Drink responsibly.</span>
-    </div>
+    <div class="legal">© 2026 Peaking Waters LLC. All rights reserved. Well water tested per NC guidelines. Drink responsibly.</div>
   </div>
 </footer>
 
-<script src="js/site.js"></script>
 </body>
 </html>
