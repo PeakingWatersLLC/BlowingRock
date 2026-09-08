@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pub Office — Peaking Waters</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --ink:#1E2A38;
+    --ink-soft:#33445A;
+    --paper:#EDE6D3;
+    --paper-dim:#E3DAC3;
+    --card:#F7F3E7;
+    --oxblood:#7B2D26;
+    --brass:#A9803F;
+    --moss:#516B4E;
+    --amber:#B8842E;
+    --slate:#8A8F98;
+    --line:#C9BE9F;
+    --shadow: 2px 3px 0 rgba(30,42,56,0.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.5;
+  }
+  header{
+    padding:38px 40px 26px;
+    border-bottom:2px solid var(--ink);
+    background:var(--paper-dim);
+  }
+  .kicker{
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--oxblood);
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-size:38px;
+    font-weight:600;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .dek{
+    max-width:640px;
+    font-size:15.5px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .as-of{
+    margin-top:16px;
+    font-size:12.5px;
+    color:var(--slate);
+  }
+  nav.tabs{
+    display:flex;
+    gap:6px;
+    padding:18px 40px 0;
+    background:var(--paper-dim);
+    border-bottom:2px solid var(--ink);
+  }
+  nav.tabs button{
+    font-family:'Public Sans', sans-serif;
+    font-size:14px;
+    font-weight:600;
+    padding:11px 20px;
+    background:transparent;
+    border:1px solid var(--ink);
+    border-bottom:none;
+    border-radius:6px 6px 0 0;
+    cursor:pointer;
+    color:var(--ink-soft);
+    position:relative;
+    top:2px;
+  }
+  nav.tabs button.active{
+    background:var(--paper);
+    color:var(--ink);
+    border-bottom:2px solid var(--paper);
+  }
+  main{
+    max-width:1080px;
+    margin:0 auto;
+    padding:34px 40px 80px;
+  }
+  section.view{ display:none; }
+  section.view.active{ display:block; }
+
+  /* --- SHELF --- */
+  .shelf-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:18px;
+  }
+  .title-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:20px 22px;
+    box-shadow:var(--shadow);
+  }
+  .title-card h3{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 4px;
+  }
+  .title-card .sub{
+    font-size:12.5px;
+    color:var(--slate);
+    margin:0 0 12px;
+  }
+  .status-pill{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:20px;
+    margin-bottom:12px;
+  }
+  .status-live{ background:#E2EFDA; color:var(--moss); }
+  .status-progress{ background:#FCE9D2; color:var(--amber); }
+  .status-flag{ background:#F5DEDA; color:var(--oxblood); }
+  .title-card ul{
+    margin:0;
+    padding-left:18px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .title-card ul li{ margin-bottom:5px; }
+  .title-card .note{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--oxblood);
+    font-style:italic;
+  }
+
+  /* --- PLAYBOOK --- */
+  .lane{
+    margin-bottom:30px;
+  }
+  .lane-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--ink);
+  }
+  .lane-head h2{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:600;
+    margin:0;
+  }
+  .lane-head .lane-tag{
+    font-size:12px;
+    color:var(--slate);
+  }
+  .task{
+    display:grid;
+    grid-template-columns:22px 1fr auto;
+    gap:14px;
+    align-items:start;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .task:last-child{ border-bottom:none; }
+  .task .box{
+    width:16px; height:16px;
+    border:2px solid var(--ink);
+    border-radius:3px;
+    margin-top:2px;
+  }
+  .task .body h4{
+    margin:0 0 3px;
+    font-size:14.5px;
+    font-weight:600;
+  }
+  .task .body p{
+    margin:0;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .task .where{
+    font-size:12px;
+    color:var(--slate);
+    text-align:right;
+    white-space:nowrap;
+    padding-top:2px;
+  }
+  .prio{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    padding:2px 7px;
+    border-radius:4px;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+  .prio-now{ background:var(--oxblood); color:#fff; }
+  .prio-next{ background:var(--brass); color:#fff; }
+  .prio-later{ background:var(--slate); color:#fff; }
+
+  .callout{
+    background:var(--card);
+    border-left:4px solid var(--oxblood);
+    padding:16px 20px;
+    border-radius:0 6px 6px 0;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:24px;
+  }
+  .callout strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="kicker">Peaking Waters LLC — Pub Office</p>
+  <h1>The Shelf &amp; the Push</h1>
+  <p class="dek">Where the catalog actually stands, and what moves revenue on the two live titles while The Fathom is being written.</p>
+  <p class="as-of">Updated September 8, 2026</p>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-view="shelf">The Shelf</button>
+  <button data-view="playbook">Revenue Playbook</button>
+</nav>
+
+<main>
+
+  <section id="shelf" class="view active">
+    <div class="shelf-grid">
+
+      <div class="title-card">
+        <h3>The Pace</h3>
+        <p class="sub">Book I — The Cubit and the Quark</p>
+        <span class="status-pill status-live">Live</span>
+        <ul>
+          <li>Ebook — KDP Select, $3.99, 70% royalty</li>
+          <li>Paperback — 6×9 matte B&amp;W, $9.99, expanded distribution</li>
+          <li>Audio — not started (ACX needs human narration; Virtual Voice still invite-only)</li>
+        </ul>
+        <p class="note">KDP age-range metadata was misfiled at 13–15 on both editions — worth confirming this got corrected before any promo push sends new traffic to the listing.</p>
+      </div>
+
+      <div class="title-card">
+        <h3>To Stay</h3>
+        <p class="sub">Speculative literary fiction</p>
+        <span class="status-pill status-flag">Live — flagged for revision</span>
+        <ul>
+          <li>Ebook — KDP Select, $4.99</li>
+          <li>Paperback — live on Amazon</li>
+          <li>Categories — Hard Science Fiction, Space Exploration, Literary Fiction Sagas</li>
+        </ul>
+        <p class="note">Live, but you're not content with it as-is. Revision scope is next — separate lane, not part of this playbook yet.</p>
+      </div>
+
+      <div class="title-card">
+        <h3>The Fathom</h3>
+        <p class="sub">Book II — The Cubit and the Quark</p>
+        <span class="status-pill status-progress">In progress</span>
+        <ul>
+          <li>Manuscript — active draft</li>
+          <li>Copyright, cover, metadata — not started</li>
+          <li>Sequencing benefit: launches into a series page that already has a live Book I</li>
+        </ul>
+      </div>
+
+      <div class="title-card">
+        <h3>The Scoreboard</h3>
+        <p class="sub">Nonfiction — Kardashev Scale</p>
+        <span class="status-pill status-progress">In pipeline</span>
+        <ul>
+          <li>Manuscript — outline depth</li>
+          <li>Planned wide from day one (audience doesn't lean KU)</li>
+        </ul>
+      </div>
+
+      <div class="title-card">
+        <h3>Digital Gold for Everyone</h3>
+        <p class="sub">Bitcoin nonfiction primer</p>
+        <span class="status-pill status-progress">Drafted</span>
+        <ul>
+          <li>10 chapters + author's note complete</li>
+          <li>Financial disclaimer review — flagged, not resolved</li>
+          <li>Voice pass pending — needs actual @BitcoinBroham posts to refine tone</li>
+        </ul>
+      </div>
+
+      <div class="title-card">
+        <h3>Don't Make It Weird</h3>
+        <p class="sub">Deb's title — psycho-comedy</p>
+        <span class="status-pill status-progress">In pipeline</span>
+        <ul>
+          <li>Joint Pub Office account, shared revenue split</li>
+        </ul>
+      </div>
+
+      <div class="title-card">
+        <h3>Audacious</h3>
+        <p class="sub">Episodic narrative nonfiction</p>
+        <span class="status-pill status-progress">Held</span>
+        <ul>
+          <li>IP/legal caution flagged before drafting begins</li>
+        </ul>
+      </div>
+
+      <div class="title-card">
+        <h3>The Sweet Death</h3>
+        <p class="sub">Uplifting spirituality fiction</p>
+        <span class="status-pill status-progress">Held</span>
+        <ul>
+          <li>IP/legal caution flagged before drafting begins</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="playbook" class="view">
+
+    <div class="callout"><strong>Scope:</strong> this lane covers revenue moves on the two titles that are actually live — The Pace and To Stay — while The Fathom is drafted in the background. Nothing here touches the To Stay revision (separate track) or nickconenna.com (separate review).</div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <h2>Discoverability</h2>
+        <span class="lane-tag">Amazon's own algorithm — cheapest revenue lever you have</span>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Re-check keywords &amp; categories on both live titles<span class="prio prio-now">NOW</span></h4><p>Seven keyword slots each on The Pace and To Stay — confirm none are wasted on redundant terms with the category name already baked in.</p></div>
+        <div class="where">KDP dashboard</div>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Set up Amazon Author Central, link both titles as a series<span class="prio prio-now">NOW</span></h4><p>Author bio, photo, and the "customers who bought this also bought" stacking only works once the profile exists.</p></div>
+        <div class="where">authorcentral.amazon.com</div>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Add cross-promo back matter to both books<span class="prio prio-next">NEXT</span></h4><p>End of The Pace points to To Stay and vice versa — a reader who finishes one is the highest-intent lead you'll ever get for the other.</p></div>
+        <div class="where">Re-upload via KDP</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <h2>Social proof</h2>
+        <span class="lane-tag">Reviews are the input the algorithm and readers both trust</span>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Build a small ARC/early-reader list<span class="prio prio-now">NOW</span></h4><p>Even 10–15 honest reviews across the two titles changes how both look to a browsing reader.</p></div>
+        <div class="where">Personal network, BookSirens/StoryOrigin</div>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Direct-ask email or message to anyone who's already read either book<span class="prio prio-now">NOW</span></h4><p>Cheapest review source you have — people who already finished it and liked it enough to mention it.</p></div>
+        <div class="where">Personal outreach</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <h2>Visibility spike</h2>
+        <span class="lane-tag">A deliberate push, not a passive listing</span>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Consider a Kindle Countdown Deal on The Pace<span class="prio prio-next">NEXT</span></h4><p>Available since it's KU-exclusive — a short price drop can produce a rank spike that increases organic browsing for a window afterward.</p></div>
+        <div class="where">KDP Promotions tab</div>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Track KENP page-read data weekly on both titles<span class="prio prio-next">NEXT</span></h4><p>Page reads are likely doing more volume than outright purchases right now — worth knowing which chapters are holding readers before The Fathom locks its opening.</p></div>
+        <div class="where">KDP Reports</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-head">
+        <h2>The Fathom runway</h2>
+        <span class="lane-tag">Building demand before it's ready costs nothing now</span>
+      </div>
+      <div class="task">
+        <div class="box"></div>
+        <div class="body"><h4>Start capturing emails from Pace/To Stay readers<span class="prio prio-later">LATER</span></h4><p>A short "get notified when Book II lands" note in back matter, pointed at a simple sign-up — no need for nickconenna.com to be resolved first.</p></div>
+        <div class="where">Back matter + simple sign-up form</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+document.querySelectorAll('nav.tabs button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('section.view').forEach(v=>v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.view).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
